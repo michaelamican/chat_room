@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Group Chat</title>
+    
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+    	$(document).ready(function(){
+
+    		var socket = io();
+
+    		var text = 'Please enter your username';
+    		var username = prompt(text);
+			var message = '';
+
+			
+			socket.emit('initial',{username:username});
+			socket.on('enter', function(data){
+				console.log('Initialized');
+				$('#board').append('<h5>'+data.username + data.entrance+'</h5>');
+				$('#username').html(data.username);
+				console.log('entering');
+			});
+		
+
+			$('#input').submit(function(){
+				console.log('submitting message...');
+				message = $('#message').val();
+				socket.emit('add', {username:username, message:message});
+				console.log('User emitted message to socket');
+				$('#message').val('');
+				return false;
+			});
+			socket.on('posting', function(data){
+				console.log(message);
+				console.log('received data from socket');
+				$('#board').append('<h4>'+ data.username + ': ' + data.message + '</h4>')
+			});
+			
+		});
+    </script>
+</head>
+<body>
+
+	<div id='wrapper'>
+		<div id='convo_board'>
+			<h1> Conversation Board </h1>
+			<hr>
+			<div id='board'>
+			</div>
+			<form id='input'>
+				<input type='text' id='message' name='message' placeholder='Say something sassy'></input>
+				<button type='submit' id='send'>Send</button>
+			</form>
+			<hr>
+			<h4>Logged in as <span id='username'></span>.</h4>
+		</div>
+	</div>
+</body>
+</html>

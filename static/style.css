@@ -1,0 +1,87 @@
+*{
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: border-box;
+	font: Quicksand;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+}
+h1{
+	font-size: 2.25em;
+	margin: 1vh auto;
+	color: whitesmoke;
+	text-shadow: 1px 1px 1px white;
+}
+h4{
+	font-size: 1em;
+	margin: 1vh auto;
+	color: linen;
+	text-shadow: 1px 1px 1px snow;
+}
+h5{
+	font-size: 0.8em;
+	margin: 1vh auto;
+	color: gainsboro;
+	text-shadow: 1px 1px 1px snow;
+}
+#wrapper{
+	background: url('bokeh.jpg');
+	background-size: cover;
+	background-repeat: stretch;
+	z-index: 40;
+	height: 100%;
+	width: 100%;
+	padding: 1vh;
+}
+#concealer{
+	z-index: 100;
+	background-color: black;
+	background-size: 100%;
+	height: 100%;
+	width: 100%;
+	padding: 20vh;
+}
+#promptbox{
+	background-color: dimgray;
+	opacity: 0.9;
+	height: 40vh;
+	width: 60vw;
+	margin: 5vh auto;
+	padding: 15vh;
+}
+#convo_board{
+	z-index: 40;
+}
+#board{
+	background: linear-gradient(#292929,#292929,#292929,#292929,#292929,#634c35);
+	color: white;
+	width: 85vw;
+	height: 60vh;
+	opacity: 0.9;
+	border: 1px solid gray;
+	margin: 1vh auto;
+	overflow: scroll;
+}
+button{
+	background: linear-gradient(90deg, firebrick, firebrick, orangered, orangered, firebrick, firebrick, firebrick, firebrick, firebrick, firebrick, orangered, firebrick);
+	color: black;
+	font-weight: bold;
+	opacity:0.8;
+	box-shadow: 1px 1px 1px white;
+	height: 3vh;
+	width: 6vw;
+	margin: 1vh;
+}
+button:hover{
+	opacity: 1;
+}
+button :click{
+	background: linear-gradient(90deg, firebrick, firebrick, orangered, orangered, firebrick, firebrick, firebrick, firebrick, firebrick, firebrick, orangered, firebrick);
+	color: darkred;
+	opacity:1;
+	box-shadow: 1px 1px 1px white;
+}
+input{
+	width: 28vw;
+	height: 3vh;
+}
